@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <roll>101</roll>
+        <name>Vaishnavi Narayandas</name>
+        <dob>2003-08-21</dob>
+        <class>3rd Year</class>
+        <department>Computer Science</department>
+        <email>nvaishnavi2108@gmail.com</email>
+    </student>
+    <student>
+        <roll>102</roll>
+        <name>Amit Kumar</name>
+        <dob>2002-05-15</dob>
+        <class>3rd Year</class>
+        <department>Electronics</department>
+        <email>amitkumar@example.com</email>
+    </student>
+    <student>
+        <roll>103</roll>
+        <name>Priya Sharma</name>
+        <dob>2003-02-18</dob>
+        <class>3rd Year</class>
+        <department>Information Technology</department>
+        <email>priyasharma@example.com</email>
+    </student>
+    <student>
+        <roll>104</roll>
+        <name>Rahul Verma</name>
+        <dob>2002-09-12</dob>
+        <class>3rd Year</class>
+        <department>Mechanical Engineering</department>
+        <email>rahulverma@example.com</email>
+    </student>
+    <student>
+        <roll>105</roll>
+        <name>Simran Kaur</name>
+        <dob>2003-07-08</dob>
+        <class>3rd Year</class>
+        <department>Computer Science</department>
+        <email>simrankaur@example.com</email>
+    </student>
+    <student>
+        <roll>106</roll>
+        <name>Vikram Singh</name>
+        <dob>2002-04-20</dob>
+        <class>3rd Year</class>
+        <department>Civil Engineering</department>
+        <email>vikramsingh@example.com</email>
+    </student>
+    <student>
+        <roll>107</roll>
+        <name>Neha Agarwal</name>
+        <dob>2003-06-25</dob>
+        <class>3rd Year</class>
+        <department>Electronics</department>
+        <email>nehaagarwal@example.com</email>
+    </student>
+    <student>
+        <roll>108</roll>
+        <name>Arjun Reddy</name>
+        <dob>2002-12-10</dob>
+        <class>3rd Year</class>
+        <department>Computer Science</department>
+        <email>arjunreddy@example.com</email>
+    </student>
+    <student>
+        <roll>109</roll>
+        <name>Swati Mehta</name>
+        <dob>2003-10-05</dob>
+        <class>3rd Year</class>
+        <department>Information Technology</department>
+        <email>swatimehta@example.com</email>
+    </student>
+    <student>
+        <roll>110</roll>
+        <name>Rohan Gupta</name>
+        <dob>2002-08-30</dob>
+        <class>3rd Year</class>
+        <department>Mechanical Engineering</department>
+        <email>rohangupta@example.com</email>
+    </student>
+</students>

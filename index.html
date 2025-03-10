@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Lookup</title>
+    <style>
+        /* Background Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 35px;
+            width: 50%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0px 8px 32px rgba(255, 105, 180, 0.3);
+            color: #333;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Input Field */
+        input {
+            width: 85%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 8px rgba(255, 105, 180, 0.2);
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Button Styling */
+        button {
+            background: #ff66b2;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #ff3385;
+            transform: scale(1.07);
+            box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        /* Result Box */
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            color: #333;
+            display: none;
+            box-shadow: 0px 4px 10px rgba(255, 182, 193, 0.4);
+            text-align: left;
+        }
+
+        p {
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        span {
+            font-weight: normal;
+            color: #222;
+        }
+    </style>
+
+    <script>
+        function fetchStudentDetails() {
+            let rollNumber = document.getElementById("rollInput").value.trim();
+            if (rollNumber === "") {
+                alert("Please enter a roll number!");
+                return;
+            }
+
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let xmlDoc = this.responseXML;
+                    let students = xmlDoc.getElementsByTagName("student");
+                    let found = false;
+                    let output = "<h3 style='color:#333; font-weight:bold;'>Student Details</h3>";
+
+                    for (let i = 0; i < students.length; i++) {
+                        let roll = students[i].getElementsByTagName("roll")[0].childNodes[0].nodeValue;
+
+                        if (roll === rollNumber) {
+                            let name = students[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                            let dob = students[i].getElementsByTagName("dob")[0].childNodes[0].nodeValue;
+                            let className = students[i].getElementsByTagName("class")[0].childNodes[0].nodeValue;
+                            let department = students[i].getElementsByTagName("department")[0].childNodes[0].nodeValue;
+                            let email = students[i].getElementsByTagName("email")[0].childNodes[0].nodeValue;
+
+                            output += `<p>Roll Number: <span>${roll}</span></p>`;
+                            output += `<p>Name: <span>${name}</span></p>`;
+                            output += `<p>Date of Birth: <span>${dob}</span></p>`;
+                            output += `<p>Class: <span>${className}</span></p>`;
+                            output += `<p>Department: <span>${department}</span></p>`;
+                            output += `<p>Email: <span>${email}</span></p>`;
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        output = "<p style='color:red;'>Student not found!</p>";
+                    }
+
+                    document.getElementById("result").innerHTML = output;
+                    document.getElementById("result").style.display = "block";
+                }
+            };
+
+            xhttp.open("GET", "students.xml", true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Information</h2>
+        <input type="text" id="rollInput" placeholder="Enter Roll Number">
+        <button onclick="fetchStudentDetails()">Search</button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
